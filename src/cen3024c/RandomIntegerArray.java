@@ -6,7 +6,7 @@ package cen3024c;
 
 import java.util.Random;
 
-public class GenerateRandArrayInt {
+public class RandomIntegerArray {
 	
 	/**
 	 * Outputs the contents of an integer array in the terminal.
@@ -87,12 +87,12 @@ public class GenerateRandArrayInt {
 	 * @param numberOfRandomNumbers Integer representing the number of elements in the array.
 	 * @return An array of random integers.
 	 */
-	public static int[] generateRandomArray(int numberOfRandomNumbers) {
+	public static int[] generateRandomArray(int numberOfRandomNumbers, int lowerBound, int upperBound) {
 		int[] randomIntArray = new int[numberOfRandomNumbers];
 		Random random = new Random();
 		
 		for (int i = 0; i < (numberOfRandomNumbers); i++) {
-			randomIntArray[i] = random.nextInt(1, 10);
+			randomIntArray[i] = random.nextInt(lowerBound, upperBound);
 		} // End of for loop.
 		
 		return randomIntArray;

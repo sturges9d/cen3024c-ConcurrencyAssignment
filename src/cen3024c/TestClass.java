@@ -12,7 +12,9 @@ public class TestClass {
 	 */
 	public static void main(String[] args) {
 		int n = 200000000;
-		int[] randomArray = GenerateRandArrayInt.generateRandomArray(n);
+		int lowerBound = 1;
+		int upperBound = 10;
+		int[] randomArray = RandomIntegerArray.generateRandomArray(n, lowerBound, upperBound);
 		singleThreadSumTimed(randomArray);
 		
 	} // End of main.
@@ -26,7 +28,7 @@ public class TestClass {
 		int result = sumArray(array);
 		long endTime = System.nanoTime();
 		long elapsedTime = endTime - startTime;
-		System.out.println("Single thread: Elapsed time = " + elapsedTime + " ns, Sum = " + result);
+		System.out.println("Single thread: Elapsed time = " + elapsedTime + " ns, Sum = " + result + "(200,000,000 - 2,000,000,000)");
 	} // End of singleThreadSumTimed.
 	
 	/**
