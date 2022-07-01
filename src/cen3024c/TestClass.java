@@ -17,7 +17,9 @@ public class TestClass {
 		int lowerBound = 1;
 		int upperBound = 10;
 		int[] randomArray = RandomIntegerArray.generateRandomArray(n, lowerBound, upperBound);
-		singleThreadSumTimed(randomArray); 
+		singleThreadSumTimed(randomArray);
+		Thread t1 = new Thread(new MultiThreadCount(randomArray, 0));
+		t1.start();
 	} // End of main.
 	
 	/**
@@ -29,6 +31,12 @@ public class TestClass {
 		int result = sumArray(array);
 		long endTime = System.nanoTime();
 		long elapsedTime = endTime - startTime;
+		
+		// TODO Scorekeeping:
+//		long elapsedTimeMax;
+//		long elapsedTimeMin;
+		
+		
 		DecimalFormat df = new DecimalFormat("###,###,###");
 		System.out.println("Single thread:\n\tElapsed time = " + df.format(elapsedTime) + " ns\n\tSum = " + df.format(result) + " (Range: 200,000,000 - 2,000,000,000)");
 	} // End of singleThreadSumTimed.
