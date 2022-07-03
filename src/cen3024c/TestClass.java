@@ -29,7 +29,7 @@ public class TestClass implements Runnable {
 	} // End of incrementArrayIndex method.
 	
 	public static void main(String[] args) {
-		SingleThreadCount.singleThreadSumTimed(randomArray);
+		// Multithread method:
 		// First thread.
 		Thread t1 = new Thread(new TestClass());
 		t1.start();
@@ -46,9 +46,12 @@ public class TestClass implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 		DecimalFormat df = new DecimalFormat("###,###,###");
 		System.out.println("Multi-thread:\n\tElapsed time = " + df.format(elapsedTime) + " ns\n\tSum = " + df.format(count) + " (Possible range: 200,000,000 - 2,000,000,000)");
+		
+		// Single thread method:
+		SingleThreadCount.singleThreadSumTimed(randomArray);
+		
 	} // End of main method.
 
 	@Override
