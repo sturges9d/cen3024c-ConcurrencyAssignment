@@ -53,12 +53,12 @@ class JUnitTestLogic {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-//		t2.start();
-//		try {
-//			t2.join();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		t2.start();
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		assertTrue("Array value is equal to or above 200,000,000.", TestClass.count >= 200000000);
 		assertTrue("Array value is equal to or below 2,000,000,000.", TestClass.count <= 2000000000);
 	} // End of multithreadSumTest.
