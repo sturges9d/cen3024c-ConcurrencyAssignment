@@ -1,3 +1,7 @@
+/**
+ * @author Stephen Sturges
+ * @version 07/03/2022
+ */
 package cen3024c;
 
 import java.text.DecimalFormat;
@@ -42,14 +46,6 @@ public class TestClass implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// Third thread.
-//		Thread t3 = new Thread(new TestClass());
-//		t3.start();
-//		try {
-//			t3.join();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
 		
 		DecimalFormat df = new DecimalFormat("###,###,###");
 		System.out.println("Multi-thread:\n\tElapsed time = " + df.format(elapsedTime) + " ns\n\tSum = " + df.format(count) + " (Possible range: 200,000,000 - 2,000,000,000)");
