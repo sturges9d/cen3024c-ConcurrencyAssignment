@@ -6,7 +6,7 @@ package cen3024c;
 
 import java.text.DecimalFormat;
 
-public class TestClass implements Runnable {
+public class TestClass {
 
 	static int sizeOfArray = 200000000;
 	static int lowerBound = 1;
@@ -16,22 +16,12 @@ public class TestClass implements Runnable {
 	static int count = 0;
 	static long elapsedTime = 0;
 	
-	public static synchronized void countArray() {
-		count += randomArray[arrayIndex];
-	} // End of countArray method.
 	
-	public static synchronized void addElapsedTime(long time) {
-		elapsedTime += time;
-	}
-	
-	public static synchronized void incrementArrayIndex() {
-		arrayIndex++;
-	} // End of incrementArrayIndex method.
 	
 	public static void main(String[] args) {
 		// Multithread method:
 		// First thread.
-		Thread t1 = new Thread(new TestClass());
+		Thread t1 = new Thread(new MultithreadSum());
 		t1.start();
 		try {
 			t1.join();
@@ -39,7 +29,7 @@ public class TestClass implements Runnable {
 			e.printStackTrace();
 		}
 		// Second thread.
-		Thread t2 = new Thread(new TestClass());
+		Thread t2 = new Thread(new MultithreadSum());
 		t2.start();
 		try {
 			t2.join();
@@ -54,16 +44,6 @@ public class TestClass implements Runnable {
 		
 	} // End of main method.
 
-	@Override
-	public void run() {
-		long startTime = System.nanoTime();
-		while(arrayIndex < sizeOfArray) {
-			countArray();
-			incrementArrayIndex();
-		} // End of while loop.
-		long endTime = System.nanoTime();
-		long elapsedTime = endTime - startTime;
-		addElapsedTime(elapsedTime);
-	} // End of run method.
+	
 
 } // End of TestClass class.
